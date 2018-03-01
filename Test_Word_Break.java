@@ -16,6 +16,15 @@ class Test_Word_Break {
 		dict.add("enjoy");
 		assertEquals(false,Word_Break.wordBreak(null, dict));
 	}
+	void test_NullDict() {
+		assertEquals(false,Word_Break.wordBreak("youenjoy", null));
+	}
+	void test_EmptyString() {
+		List<String> dict=new ArrayList<>();
+		dict.add("apple");
+		dict.add("ate");
+		assertEquals(true,Word_Break.wordBreak("", dict));
+	}
 	void test_EmptyDict() {
 		List<String> dict=new ArrayList<>();
 		assertEquals(false,Word_Break.wordBreak("helloWorld", dict));
@@ -42,6 +51,20 @@ class Test_Word_Break {
 		dict.add("apple");
 		assertEquals(false,Word_Break.wordBreak("ieatApple", dict));
 	}
+	void test_ValidCase_CheckGreedy1() {
+	List<String> dict=new ArrayList<>();
+	dict.add("he");
+	dict.add("heart");
+	dict.add("cat");
+	assertEquals(true,Word_Break.wordBreak("heartcat",dict));
+}
+	void test_ValidCase_CheckGreedy2() {
+	List<String> dict=new ArrayList<>();
+	dict.add("he");
+	dict.add("heart");
+	dict.add("artist");
+	assertEquals(true,Word_Break.wordBreak("heartist",dict));
+}
 
 
 }
