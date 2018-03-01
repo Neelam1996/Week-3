@@ -29,7 +29,7 @@ public class Word_Break {
 		System.out.println(wordBreak(str,wordDict));
 	}
 	 public static boolean wordBreak(String s, List<String> wordDict) {
-		 if (s == null ||  wordDict.size() == 0) {
+		 if (s == null || wordDict==null|| wordDict.size() == 0) {
 	            return false;
 	        }
 		 if(s.length()==0) {
@@ -44,23 +44,23 @@ public class Word_Break {
 	        }
 	        
 	        int strLen = s.length();
-	        boolean[] dp =  new boolean[strLen + 1];
-	        dp[0] = true;
+	        boolean[] isWord =  new boolean[strLen + 1];
+	        isWord[0] = true;
 	        for (int i = 1; i <= strLen; i++) {
 	            
 	            for (int j = Math.max(1, i-maxLen+1); j <= i; j++) {
-	                if (!dp[j-1]) {
+	                if (!isWord[j-1]) {
 	                    continue;
 	                }
 	                
 	                if (dict.contains(s.substring(j-1, i))) {
-	                    dp[i] = true;
+	                    isWord[i] = true;
 	                    break;
 	                }
 	            }
 	        } 
 	        
-	        return dp[strLen];
+	        return isWord[strLen];
 	 }
 
 }
